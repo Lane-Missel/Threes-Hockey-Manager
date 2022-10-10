@@ -1,0 +1,17 @@
+3 - Urgent, Critical Infastructure Involved
+2 - Important, Playable but gameplay expericence suffers
+1 - Minor, Visual bug or small computational error
+
+FEATURE 101: RANDOM TEAM GENERATION
+
+FEATURE 102: PLAYER VIEW
+Description: View player overview after selecting in team page.
+
+BUG 201: BACK BUTTON
+Issue: takes 2 clicks to go back to previous page at first
+Urgency: 2
+Estimated Time Needed: 0.25 Hours
+Date: 21/06/2022
+Estimate: 25/06/2022
+Completed: na
+
