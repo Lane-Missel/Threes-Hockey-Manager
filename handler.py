@@ -145,6 +145,7 @@ class Other:
 
     @classmethod
     def load_from_exec(cls, string: str):
+        """Returns Other object instantiated from a string interpreted as a python commmand."""
         try:
             other = exec(string)
         except Exception:

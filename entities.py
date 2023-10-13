@@ -1,9 +1,14 @@
+"""
+Lane Missel
+
+General objects for the application.
+"""
+
 from dataclasses import dataclass, field
 from enum import Enum
 from itertools import combinations
 from random import randint
 from typing import Dict, List, Tuple
-
 
 class Position(Enum):
     goaltender = 0
@@ -17,6 +22,7 @@ class GameTypes(Enum):
 
 @dataclass
 class Person:
+    """An object representing a person in the game."""
     identifier: int
     first: str
     last: str
@@ -30,17 +36,20 @@ class Person:
 
 @dataclass(frozen=True)
 class Contract:
+    """An object with contract information"""
     salary: int
     type_id: int
 
 @dataclass
 class Record:
+    """An object for tracking team/goalie records."""
     wins: int = 0
     losses: int = 0
     ties: int = 0
 
 @dataclass
 class Statistics:
+    """An object for tracking general player statistics."""
     goals: int = 0
     assists: int = 0
     shots: int = 0
@@ -63,12 +72,14 @@ class Statistics:
 
 @dataclass
 class GoaltenderStatistics(Statistics):
+    """An object fro tracking goaltending statistics."""
     goals_against: int = 0
     shots_against: int = 0
     record: Record = Record()
 
 @dataclass(frozen=True)
 class StatisticalRecordKey:
+    """An object for indexing statistics"""
     year: int
     team: int = None
     type: int = None
@@ -78,6 +89,7 @@ class StatisticalRecordKey:
 
 @dataclass
 class StatisticalRecords:
+    """An object for managing statistics objects."""
     records: dict = field(default_factory=dict)
 
     @property
@@ -160,6 +172,7 @@ class ForAgainst:
 
 @dataclass
 class TeamStatistics:
+    """An object for tracking a teams statistics."""
     record: Record = Record()
     goals: ForAgainst = ForAgainst()
     shots: ForAgainst = ForAgainst()
@@ -183,6 +196,7 @@ class TeamStatistics:
 
 @dataclass
 class Player(Person):
+    """A player in the game."""
     position_id: int
     potential: int
     longevity: int
@@ -222,6 +236,7 @@ class Player(Person):
 
 @dataclass
 class Skater(Player):
+    """A player that plays out."""
     shooting: int = 0
     defending: int = 0
 
@@ -251,6 +266,7 @@ class Skater(Player):
 
 @dataclass
 class Goaltender(Player):
+    """A goaltender."""
     stopping: int = 0
 
     @property
@@ -259,6 +275,7 @@ class Goaltender(Player):
 
 @dataclass
 class Spending:
+    """An object for tracking team spending."""
     start: int
     income: int
     expenses: int
@@ -269,6 +286,7 @@ class Spending:
 
 @dataclass
 class Roster:
+    """A teams roster."""
     active: set
     reserves: set
  

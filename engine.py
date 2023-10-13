@@ -1,3 +1,10 @@
+"""
+Lane Missel
+
+The simulation engine for the application.
+"""
+
+
 from dataclasses import dataclass
 from random import random
 from typing import List
