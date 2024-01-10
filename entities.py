@@ -75,7 +75,7 @@ class GoaltenderStatistics(Statistics):
     """An object fro tracking goaltending statistics."""
     goals_against: int = 0
     shots_against: int = 0
-    record: Record = Record()
+    record: Record = field(default_factory = Record)
 
 @dataclass(frozen=True)
 class StatisticalRecordKey:
@@ -173,10 +173,10 @@ class ForAgainst:
 @dataclass
 class TeamStatistics:
     """An object for tracking a teams statistics."""
-    record: Record = Record()
-    goals: ForAgainst = ForAgainst()
-    shots: ForAgainst = ForAgainst()
-    possession: ForAgainst = ForAgainst()
+    record: Record = field(default_factory = Record)
+    goals: ForAgainst = field(default_factory = ForAgainst)
+    shots: ForAgainst = field(default_factory = ForAgainst)
+    possession: ForAgainst = field(default_factory = ForAgainst)
     games: int = 0
 
     @property
@@ -203,8 +203,8 @@ class Player(Person):
     fitness: int
     passing: int
     contracts: Dict[int, Contract]
-    statistics: StatisticalRecords()
-    rights: dict
+    statistics: StatisticalRecords = field(default_factory = StatisticalRecords)
+    rights: dict = field(default_factory = dict)
 
     def get_statistics(self, year=None, team=None):
         # get lastest year.
@@ -321,8 +321,8 @@ class Line:
 
 @dataclass
 class Lineup:
-    first: Line = Line()
-    second: Line = Line()
+    first: Line = field(default_factory = Line)
+    second: Line = field(default_factory = Line)
     goaltender: int = None
     backup: int = None
     bias: float = 0.5
@@ -337,7 +337,7 @@ class Organization:
     roster: Roster
     statistics: Dict[int, TeamStatistics] = field(default_factory=dict)
     spending: Dict[int, Spending] = field(default_factory=dict)
-    lineup: Lineup = Lineup()
+    lineup: Lineup = field(default_factory = Lineup)
 
     @property
     def players(self) -> list:
@@ -394,9 +394,6 @@ class League:
             if combo1[0] in combo2 or combo1[1] in combo2:
                 # swap
                 pass
-            
-
-
 
 
 if __name__ == '__main__':
